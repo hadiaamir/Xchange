@@ -1,0 +1,150 @@
+.Currency {
+    background-color: hsl(169, 90%, 33%);
+    height: 100vh;
+    padding: 50px 100px;
+    display: flex;
+    flex-flow: column;
+    
+}
+
+
+.navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+
+.currency-form {
+    display: flex;
+    flex-flow: row;
+
+    justify-content: space-between;
+}
+
+
+.currency-form-input-wrapper {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+
+.currency-form-subheading {
+    font-weight: 400;
+    color: #020B2A;
+}
+
+.currency-form-smallheading {
+    color: #A7A9B1;
+}
+
+.currency-input {
+    font-family: 'DM Sans', sans-serif;
+    width: fit-content;
+    padding: 17px;
+    color: #020B2A;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+   
+    background-color: transparent;
+    
+    border-bottom: 2px solid #e2e2e2;
+    border-top: 2px none #ffffff;
+    border-left: 2px none #ffffff;
+    border-right: 2px none #ffffff;
+
+    &:focus {
+        outline: none;
+        border-bottom: 2px solid #020B2A;
+        border-top: 2px none #ffffff;
+        border-left: 2px none #ffffff;
+        border-right: 2px none #ffffff;
+        
+        transition: .8s;
+    }
+    
+}
+
+
+.currency-amt-input {
+    width: 85%;
+    padding-left: 0;
+}
+
+.currency-type-input {
+    width: 85%;
+    padding-left: 0;
+    margin-top: 4.1px;
+}
+
+
+.currency-type-wrapper {
+    margin-left: 30px;
+ 
+}
+
+.rates-refresh-time {
+    margin-top: 10px;
+}
+
+.currency-extra-info-wrapper {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    
+}
+
+.logout-btn {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    outline: none;
+
+    &:hover {
+        cursor: pointer;
+        opacity: .9;
+    }
+}
+
+
+
+
+
+.currency-inner-form {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    
+
+    background-color: #ffffff;
+    padding: 50px 70px;
+  
+}
+
+
+.currency-amt-form {
+    background-color: #FAFAFA;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+
+.currency-result-form {
+    background-color: #FAFAFA;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+
+.exchangeArrowsIcon {
+    position: absolute;
+    right: 48%;
+    top: 28%;
+}

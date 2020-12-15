@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="73px" height="70px" viewBox="0 0 73 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <g id="WEB-DEV---FINAL-EXAM" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Account" transform="translate(-629.000000, -117.000000)">
+            <g id="Group-2" transform="translate(629.000000, 117.000000)">
+                <ellipse id="Oval" fill="#020B2A" cx="36.5" cy="35" rx="36.5" ry="35"></ellipse>
+                <path id="Line" d="M42.4910209,21.985209 L51.5023407,26.4624979 L42.5137177,30.9851804 L42.503,26.984 L22.2621355,27.0362396 L21.7621371,27.0375005 L21.7596153,26.0375037 L22.2596137,26.0362428 L42.501,25.984 L42.4910209,21.985209 Z" fill="#4CD964" fill-rule="nonzero"></path>
+                <path id="Line" d="M30.5289096,38.8313256 L30.502,42.83 L51.0055742,42.9637692 L51.5055638,42.9670011 L51.4991,43.9669803 L50.9991104,43.9637483 L30.496,43.83 L30.4707353,47.8311376 L21.5000104,43.2730573 L30.5289096,38.8313256 Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

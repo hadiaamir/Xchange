@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>log-out (2)</title>
+    <g id="WEB-DEV---FINAL-EXAM" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Account" transform="translate(-1212.000000, -69.000000)" stroke="#00A083" stroke-width="2">
+            <g id="log-out-(2)" transform="translate(1213.000000, 70.000000)">
+                <path d="M4,13 L1.33333333,13 C0.596953667,13 0,12.3533002 0,11.5555556 L0,1.44444444 C0,0.646699806 0.596953667,0 1.33333333,0 L4,0" id="Path"></path>
+                <polyline id="Path" points="10 10 14 6 10 2"></polyline>
+                <line x1="13" y1="5.5" x2="4" y2="5.5" id="Path"></line>
+            </g>
+        </g>
+    </g>
+</svg>
