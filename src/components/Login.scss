@@ -1,0 +1,83 @@
+.Login {
+    background-color: hsl(169, 90%, 33%);
+    height: 100vh;
+    padding: 70px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    padding-top: 50px;
+    color: #ffffff;
+    font-size: 42px;
+}
+
+.outer-form {
+    background-color: #089B7F;
+    padding: 30px 80px;
+    max-width: 552px;
+  
+    display: flex;
+    flex-flow: column;
+    margin-top: 50px;
+}
+
+.form-subheading {
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.form-input {
+    padding: 17px;
+    color: #979AA3;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    border-radius: 4px;
+  
+    border: 2px solid transparent;
+
+    &:focus {
+        outline: none;
+        border: 2px solid #020B2A;
+        transition: .8s;
+    }
+    
+}
+
+.form-btn {
+    padding: 17px;
+    color: #979AA3;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #020B2A;
+    color:#ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.form-link {
+
+    font-weight: 400;
+    margin-bottom: 20px;
+
+
+    color:#ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 18px;
+    background: #009479;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 20px;
+}
