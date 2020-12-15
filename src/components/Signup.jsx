@@ -15,7 +15,7 @@ function Signup() {
             <input type="password" placeholder="Confirm Password" className="form-input"></input>
             
             <button type="submit" className="form-btn">Signup</button>
-            <a href="#" className="form-link">Already have an account? Click here.</a>
+            <a href="/login" className="form-link">Already have an account? Click here.</a>
         </form>
     </div>
   );

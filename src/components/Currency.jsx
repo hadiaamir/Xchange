@@ -49,8 +49,8 @@ function Currency() {
 
             <div className="currency-form-input-wrapper currency-type-wrapper">
               <small className="currency-form-smallheading">United States Dollar</small>
-              <select  value="CAD" className="currency-input currency-type-input">
-                  <option value="CAD">CAD</option>
+              <select  value="USD" className="currency-input currency-type-input">
+                  <option value="USD">USD</option>
                   <option value="saab">Saab</option>
                   <option value="mercedes">Mercedes</option>
                   <option value="audi">Audi</option>

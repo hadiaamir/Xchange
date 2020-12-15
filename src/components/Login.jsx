@@ -14,7 +14,7 @@ function Login() {
             <input type="password" placeholder="Password" className="form-input"></input>
             
             <button type="submit" className="form-btn">Login</button>
-            <a href="#" className="form-link">Don’t have an account? Click here.</a>
+            <a href="/signup" className="form-link">Don’t have an account? Click here.</a>
         </form>
     </div>
   );
