@@ -137,8 +137,8 @@ if (loading) return <div className="loading"><h1>Loading...</h1></div>;
 
           
          
-        <div className="currency-inner-form currency-amt-form">
-          
+        <div className="currency-amt-form">
+        <div className="currency-result-inner-form"> 
             <div className="currency-form-input-wrapper">
               <span className="currency-form-subheading">You Have</span>
               <input type="text" name="amount" value={inputs.amount} onChange={handleInputChange} className="currency-input currency-amt-input"></input>
@@ -157,6 +157,13 @@ if (loading) return <div className="loading"><h1>Loading...</h1></div>;
               </select>
               <CurrencyFlag currency={selectValue} width={38} />
             </div>
+            </div>
+            { exchange && selectValue !== 'USD' ?
+              <span className="currency-form-smallheading-rate"><strong>Rate:</strong> {exchange.originRate} <small className="api-companyname">by {exchange.lowestRateApi}</small></span>
+              :
+              ''
+            }
+
         </div>
 
             {/* <img className="exchangeArrowsIcon" src={exchangeArrows} /> */}
@@ -185,8 +192,7 @@ if (loading) return <div className="loading"><h1>Loading...</h1></div>;
 
             </div>
             { exchange ?
-            <span className="currency-form-smallheading-rate"><strong>Rate:</strong> {exchange.lowestExchangeRate} <small className="api-companyname">by {exchange.lowestRateApi}</small></span>
-
+              <span className="currency-form-smallheading-rate"><strong>Rate:</strong> {exchange.lowestExchangeRate} <small className="api-companyname">by {exchange.lowestRateApi}</small></span>
               :
               ''
             }
