@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../actions/profileActions';
-
+import Currency from './Currency.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 
 const Main = (props) => {
@@ -15,7 +15,7 @@ const Main = (props) => {
   return (
     <div className="Main">
       <Switch>
-        <PrivateRoute exact path="/currency" component={Currency} />
+        <PrivateRoute exact path="/" component={Currency} />
       </Switch>
     </div>
   );

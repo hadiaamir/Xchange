@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
-import Currency from './components/Currency.jsx';
+
 
 import Main from './components/Main.jsx';
 
