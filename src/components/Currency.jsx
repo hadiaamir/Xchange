@@ -1,11 +1,33 @@
 
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+
 import './Currency.scss';
 
 import tinyLogo from './images/tinyLogo.svg';
 import exchangeArrows from './images/xchangearrow.svg';
 import logoutIcon from './images/logoutIcon.svg'
 
-function Currency() {
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getCurrentProfile } from '../actions/profileActions';
+
+
+
+function Currency(props) {
+
+  const { profile: profileState } = props;
+
+  const { profile, loading } = profileState;
+
+  useEffect(() => {
+    
+    if (profile) {
+      console.log(profile)
+    }
+  }, [profile]);
+
+if (loading) return <div>Loading...</div>;
+  if (!profile) {
   return (
     <div className="Currency">
         <div className="navbar">
@@ -74,6 +96,15 @@ function Currency() {
 
     </div>
   );
+  }
 }
 
-export default Currency;
+Currency.propTypes = {
+  profile: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { getCurrentProfile })(Currency);
