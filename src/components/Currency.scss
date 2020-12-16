@@ -39,6 +39,15 @@
     color: #A7A9B1;
 }
 
+.currency-form-smallheading-rate {
+    color: #020B2A;
+    text-align: left;
+}
+
+.api-companyname {
+    color: #A7A9B1;
+}
+
 .currency-input {
     font-family: 'DM Sans', sans-serif;
     width: fit-content;
@@ -115,6 +124,16 @@
 
 
 
+.currency-result-form {
+    display: flex;
+    flex-flow: column;
+    // justify-content: space-between;
+    
+
+    background-color: #ffffff;
+    padding: 50px 70px;
+}
+
 
 
 .currency-inner-form {
@@ -126,6 +145,12 @@
     background-color: #ffffff;
     padding: 50px 70px;
   
+}
+
+.currency-result-inner-form {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
 }
 
 
@@ -160,14 +185,17 @@
 }
 
 
+
+
 .get-rate-btn {
-   
-    padding: 17px 50px;
+    width: 250px;
+    height: 55px;
+    // padding: 17px 80px;
     color: #979AA3;
     font-size: 16px;
     font-weight: 400;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 50px;
     background-color: #020B2A;
     color:#ffffff;
     border: none;
@@ -187,4 +215,39 @@
         outline: none;
         
     }
+}
+
+
+
+.is-not-active {
+  
+    opacity: .6;
+
+    width: 250px;
+    height: 55px;
+    // padding: 17px 80px;
+    color: #979AA3;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    background-color: #020B2A;
+    color:#ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 18px;
+
+
+    &:hover {
+        outline: none;
+      
+        
+    }
+
+    &:focus {
+        outline: none;
+        
+    }
+
 }

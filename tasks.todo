@@ -1,0 +1,14 @@
+
+Todo:
+    - 1. compare the results and show the lowest conversion rate. 
+    - 2. In addition, you should write which of the above API provided a lower amount of conversion. 
+            
+        - 2.1: If the exchange rates from two APIs are equal, in addition to the exchange rate, display 
+                a message that the exchange rate is equal in two services
+
+        - 2.2: otherwise, show the API which gives a lower conversion rate. 
+
+        - 2.3: You should also keep the results in a database.
+
+Done:
+    

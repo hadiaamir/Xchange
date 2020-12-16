@@ -3,6 +3,8 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import http from '../utils/http';
 import './Currency.scss';
 
+import axios from 'axios';
+
 import tinyLogo from './images/tinyLogo.svg';
 import exchangeArrows from './images/xchangearrow.svg';
 import logoutIcon from './images/logoutIcon.svg'
@@ -15,7 +17,9 @@ import { logoutUser } from '../actions/authActions';
 import CurrencyFlag from 'react-currency-flags';
 import useForm from '../hooks/useForm';
 import CURRENCY_CODES from './CurrencyCodes.json';
+import environment from '../utils/environment'
 
+import config from '../config.json';
 
 
 
@@ -38,26 +42,51 @@ function Currency(props) {
   };
 
 
-  const getExchangeRate = async () => {
-    // https://api.currencylayer.com/change?currencies=USD,EUR
-
-    try {
-      const response = await http.get(`https://api.currencylayer.com/change?currencies=USD,EUR?access_key=YOUR_ACCESS_KEY`);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-      // props.alert.error("Email or Password does not exist!");
-    }
-  }
+  const [exchange, setExchangeInfo] = useState("");
 
 
+  const [exchangeLoading, setExchangeLoading] = useState(false);
+
+  
 
   const onSubmit = async (inputs) => {
+    try {
+      setExchangeLoading(true);
+
+      console.log(inputs)
+      const exchangeInfo = { 
+        amount: inputs.amount,
+        origin: selectValue,
+        exchanger: selectExchangeValue
+      };
+      
+      const response = await http.post(`${environment.resolveApi().rest}/exchange/rate/`, exchangeInfo);
+
+      setExchangeInfo(response.data);
+      
+      // setExchangeRateInfo(exchangeRateResponse)
+
+      // console.log(exchangeRateResponse);
+
+      // let groupedCurrencyCode = 'USD' + selectValue;
+      // const convertedVal = getConvertedValue(inputs.amount, exchangeRateResponse.quotes[groupedCurrencyCode])
+      // console.log(convertedVal)
+
+    } catch (error) {
+      console.log(error);
+    }
+
+    setExchangeLoading(false);
   }
+
+
+
+  const { inputs, handleInputChange, handleSubmit } = useForm(onSubmit);
   
-  
+
+  const [exchangeBtnClass, setExchangeBtnClass] = useState("disabled");
   const [selectValue, setSelectValue] = useState("CAD");
-  const [selectExchangeValue, setselectExchangeValue] = useState("USD");
+  const [selectExchangeValue, setSelectExchangeValue] = useState("USD");
   const [originName, setOriginName] = useState("Canadian Dollar");
   const [exchangeName, setExchangeName] = useState("United States Dollar");
   
@@ -65,8 +94,6 @@ function Currency(props) {
   const handleSelectOnChange = (event) => {
     event.persist();
     setSelectValue(event.target.value);
-
-
     setOriginName(CURRENCY_CODES[event.target.options.selectedIndex].Name)
   
   };
@@ -74,10 +101,15 @@ function Currency(props) {
 
   const handleSelectOnExchange = (event) => {
     event.persist();
-    setselectExchangeValue(event.target.value);
+    setSelectExchangeValue(event.target.value);
 
     setExchangeName(CURRENCY_CODES[event.target.options.selectedIndex].Name)
+  }
 
+
+  const getConvertedValue = (amount, rate) => {
+      let conversion =  amount * rate;
+      return conversion;
   }
  
 
@@ -98,7 +130,7 @@ if (loading) return <div className="loading"><h1>Loading...</h1></div>;
     <div className="currency-outer-form">
 
 
-      <form >
+      <form onSubmit={handleSubmit}>
 
 
           <div className="currency-form">
@@ -106,9 +138,10 @@ if (loading) return <div className="loading"><h1>Loading...</h1></div>;
           
          
         <div className="currency-inner-form currency-amt-form">
+          
             <div className="currency-form-input-wrapper">
               <span className="currency-form-subheading">You Have</span>
-              <input type="text" value="0.00" className="currency-input currency-amt-input"></input>
+              <input type="text" name="amount" value={inputs.amount} onChange={handleInputChange} className="currency-input currency-amt-input"></input>
             </div>
 
             <div className="currency-form-input-wrapper currency-type-wrapper">
@@ -128,32 +161,51 @@ if (loading) return <div className="loading"><h1>Loading...</h1></div>;
 
             {/* <img className="exchangeArrowsIcon" src={exchangeArrows} /> */}
         
-        <div className="currency-inner-form currency-result-form">
-            <div className="currency-form-input-wrapper">
-              <span className="currency-form-subheading">You Get</span>
-              <input type="text" value="0.00" className="currency-input currency-amt-input"></input>
-            </div>
+        <div className="currency-result-form">
+            <div className="currency-result-inner-form">
+              <div className="currency-form-input-wrapper">
+                <span className="currency-form-subheading">You Get</span>
+                <input type="text" value={exchange.roundedConversion} className="currency-input currency-amt-input" disabled></input>
+              </div>
 
-            <div className="currency-form-input-wrapper currency-type-wrapper">
-              <small className="currency-form-smallheading">{exchangeName}</small>
-              <select value={selectExchangeValue} className="currency-input currency-type-input" onChange={handleSelectOnExchange}>
-                {CURRENCY_CODES.map((currency, index) => (
-                    <option key={index} value={currency.Code}>
-                      {currency.Code}
-                    </option>  
-                )
-                )
-                }
-              </select>
-              <CurrencyFlag currency={selectExchangeValue} width={38} />
+              <div className="currency-form-input-wrapper currency-type-wrapper">
+                <small className="currency-form-smallheading">{exchangeName}</small>
+                <select value={selectExchangeValue} className="currency-input currency-type-input" onChange={handleSelectOnExchange}>
+                  {CURRENCY_CODES.map((currency, index) => (
+                      <option key={index} value={currency.Code}>
+                        {currency.Code}
+                      </option>  
+                  )
+                  )
+                  }
+                </select>
+                
+                <CurrencyFlag currency={selectExchangeValue} width={38} />
+              </div>
+
             </div>
+            { exchange ?
+            <span className="currency-form-smallheading-rate"><strong>Rate:</strong> {exchange.lowestExchangeRate} <small className="api-companyname">by {exchange.lowestRateApi}</small></span>
+
+              :
+              ''
+            }
+            
+        </div>
+        
+
+
         </div>
 
-
-        </div>
+       { inputs.amount && inputs.amount.length > 0 ?
+        <button type="submit" className="get-rate-btn">{exchangeLoading ? 'Calculating...' : 'Get Rate'}</button>
+       :
+        <button type="button" className="is-not-active" disabled>Get Rate</button>
+       } 
 
             
-            <button type="submit" className="get-rate-btn">Get Rate</button>
+            
+            
 
 
         </form>
