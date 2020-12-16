@@ -16,36 +16,30 @@ import { withAlert } from "react-alert";
 const initialState = {
   email: '',
   password1: '',
-  password2: '',
+  confirmPassword: '',
 };
 
 
 function Signup(props) {
-
-
+  
+  
   const { auth, history } = props;
-
+  
   const onSubmit = async (inputs) => {
-    if (inputs.firstName.length === 0 || inputs.lastName.length === 0 ) {
-      props.alert.error("Name field is empty!");
-      return;
-    }
-
-    if ( !(inputs.password1 === inputs.password2) ) {
+    
+    if ( !(inputs.password === inputs.confirmPassword) ) {
       props.alert.error("Password Don't Match!");
       return;
     }
-
+    
     const signUpData = { 
-      firstName: inputs.firstName,
-      lastName: inputs.lastName, 
       email: inputs.email,
-      password: inputs.password1 
+      password: inputs.password 
     };
     
     try {
       await http.post(`${environment.resolveApi().rest}/user/register/`, signUpData);
-      props.alert.success(`Account Created! Please login to complete social profile!`);
+      props.alert.success(`Account Created! Please login.`);
       props.history.push("/login");
     } catch (error) {
       console.log(error);
@@ -60,44 +54,44 @@ function Signup(props) {
       }
     }
   };
-
-  const { inputs, handleInputChange, handleSubmit } = useForm(onSubmit, initialState);
-
   
-
+  const { inputs, handleInputChange, handleSubmit } = useForm(onSubmit, initialState);
+  
+  
+  
   useEffect(() => {
     
     if (auth.isAuthenticated) {
       history.push('/');
     }
   }, [auth, history]);
-
-
+  
+  
   return (
     <div className="Signup">
-        <img src={bigLogo} />
-        <h1>Signup</h1>
-
-        <form className="outer-form">
-            <span className="form-subheading">Please enter your email & password.</span>
-            <input type="email" placeholder="Email" className="form-input" ></input>
-            <input type="password" placeholder="Password" className="form-input"></input>
-            <input type="password" placeholder="Confirm Password" className="form-input"></input>
-            
-            <button type="submit" className="form-btn">Signup</button>
-            <a href="/login" className="form-link">Already have an account? Click here.</a>
-        </form>
+    <img src={bigLogo} />
+    <h1>Signup</h1>
+    
+    <form onSubmit={handleSubmit} className="outer-form">
+    <span className="form-subheading">Please enter your email & password.</span>
+    <input value={inputs.email}  onChange={handleInputChange} name="email" type="email" placeholder="Email" className="form-input"></input>
+    <input value={inputs.password}  onChange={handleInputChange} name="password" type="password"   placeholder="Password" className="form-input"></input>
+    <input value={inputs.confirmPassword}  onChange={handleInputChange} name="confirmPassword" type="password"   placeholder="Confirm Password" className="form-input"></input>
+    
+    <button type="submit" className="form-btn">Signup</button>
+    <a href="/login" className="form-link">Already have an account? Click here.</a>
+    </form>
     </div>
-  );
-}
-
-
-Signup.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });
-
-export default withAlert()(connect(mapStateToProps, { registerUser })(withRouter(Signup)));
+    );
+  }
+  
+  
+  Signup.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired,
+  };
+  
+  const mapStateToProps = state => ({ auth: state.auth, errors: state.errors });
+  
+  export default withAlert()(connect(mapStateToProps, { registerUser })(withRouter(Signup)));
