@@ -204,9 +204,9 @@ if (loading) return <div className="loading"><h1>Loading...</h1></div>;
         </div>
 
        { inputs.amount && inputs.amount.length > 0 ?
-        <button type="submit" className="get-rate-btn">{exchangeLoading ? 'Calculating...' : 'Get Rate'}</button>
+        <button type="submit" className="get-rate-btn">{exchangeLoading ? 'Calculating...' : 'Convert'}</button>
        :
-        <button type="button" className="is-not-active" disabled>Get Rate</button>
+        <button type="button" className="is-not-active" disabled>Convert</button>
        } 
 
             
