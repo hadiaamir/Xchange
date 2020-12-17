@@ -17,7 +17,7 @@ Todo:
              - (to call the external API less and save costs). @done
 
 
-      - 4. the password should be at least 10 characters and should contain at least one numeric character in addition to letters
+      - 4. the password should be at least 10 characters and should contain at least one numeric character in addition to letters @done
 
       - 5. Add form validation on exchange rate form (adding letters in inputs)
 
@@ -30,7 +30,7 @@ Todo:
      - 7. Write a technical report about how you made the project and upload it as well
 
 
-
+** Add both rates from api on page
   
 
 

@@ -18,7 +18,7 @@ import CurrencyFlag from 'react-currency-flags';
 import useForm from '../hooks/useForm';
 import CURRENCY_CODES from './CurrencyCodes.json';
 import environment from '../utils/environment'
-
+import { withAlert } from "react-alert";
 import config from '../config.json';
 
 
@@ -47,30 +47,33 @@ function Currency(props) {
 
   const [exchangeLoading, setExchangeLoading] = useState(false);
 
-  
+ 
+  function isNumeric(num){
+    return !isNaN(num)
+  }
+
 
   const onSubmit = async (inputs) => {
     try {
       setExchangeLoading(true);
+     
+      if(!isNumeric(inputs.amount)) {
+        setExchangeLoading(false);
+        props.alert.error("Currency amount must only include numbers.");
+        return;
+      }
 
-      console.log(inputs)
       const exchangeInfo = { 
         amount: inputs.amount,
         origin: selectValue,
         exchanger: selectExchangeValue
       };
       
+      
       const response = await http.post(`${environment.resolveApi().rest}/exchange/rate/`, exchangeInfo);
 
       setExchangeInfo(response.data);
-      
-      // setExchangeRateInfo(exchangeRateResponse)
 
-      // console.log(exchangeRateResponse);
-
-      // let groupedCurrencyCode = 'USD' + selectValue;
-      // const convertedVal = getConvertedValue(inputs.amount, exchangeRateResponse.quotes[groupedCurrencyCode])
-      // console.log(convertedVal)
 
     } catch (error) {
       console.log(error);
@@ -243,6 +246,6 @@ const mapStateToProps = state => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, logoutUser })(Currency);
+export default withAlert()(connect(mapStateToProps, { getCurrentProfile, logoutUser })(Currency));
 
 
