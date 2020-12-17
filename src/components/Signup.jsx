@@ -52,6 +52,9 @@ function Signup(props) {
       if(error.password) {
         props.alert.error(error.password);
       }
+      if(error.passwordNumber) {
+        props.alert.error(error.passwordNumber);
+      }
     }
   };
   

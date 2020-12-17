@@ -8,7 +8,30 @@ Todo:
 
         - 2.2: otherwise, show the API which gives a lower conversion rate. @done
 
-        - 2.3: You should also keep the results in a database.
+        - 2.3: You should also keep the results in a database. @done
 
-Done:
+     - 3. If the exchange rate already searched by any user less than 1 hour ago, and the same user @done
+     - or another user searches it again, just take the stored values from the database instead of the API call. @done
+
+             - 3.1: If it does not exist in the database, take it from the API @done
+             - (to call the external API less and save costs). @done
+
+
+      - 4. the password should be at least 10 characters and should contain at least one numeric character in addition to letters
+
+      - 5. Add form validation on exchange rate form (adding letters in inputs)
+
+      - 6. add animations to page and fix loader and that huge underline underneath the login and signup button,
+      - add clickable link to logo, pull email when u log in and place on top right corner
+
+
+     - 6. Create a video using OBS or similar software from the above steps and upload it besides your submission.
+
+     - 7. Write a technical report about how you made the project and upload it as well
+
+
+
+  
+
+
     
